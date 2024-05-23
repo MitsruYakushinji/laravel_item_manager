@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,5 +45,11 @@ Route::middleware('auth')->group(function () {
     // 認証済みユーザー詳細情報ページ
     Route::get('/detail', [ItemController::class, 'detail']);
 });
+
+//認証ブロックの外に記述
+Route::get('/list', [ApiController::class, 'list']);
+Route::post('/create', [ApiController::class, 'create']);
+Route::get('/token', [ApiController::class, 'token']);
+
 
 require __DIR__.'/auth.php';
